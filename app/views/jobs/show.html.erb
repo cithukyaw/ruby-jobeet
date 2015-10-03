@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @job.type %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @job.company %>
+</p>
+
+<p>
+  <strong>Logo:</strong>
+  <%= @job.logo %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @job.url %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @job.position %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @job.location %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @job.description %>
+</p>
+
+<p>
+  <strong>How to apply:</strong>
+  <%= @job.how_to_apply %>
+</p>
+
+<p>
+  <strong>Token:</strong>
+  <%= @job.token %>
+</p>
+
+<p>
+  <strong>Is public:</strong>
+  <%= @job.is_public %>
+</p>
+
+<p>
+  <strong>Is activated:</strong>
+  <%= @job.is_activated %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @job.email %>
+</p>
+
+<p>
+  <strong>Expires at:</strong>
+  <%= @job.expires_at %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @job.category.name %>
+</p>
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

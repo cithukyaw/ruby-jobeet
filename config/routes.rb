@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :posts
 
+  resources :jobs
+
   get 'pages' => 'pages#index'
 
   root 'pages#index'

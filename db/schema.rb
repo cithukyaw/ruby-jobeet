@@ -11,7 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150927045507) do
+ActiveRecord::Schema.define(version: 20151003151027) do
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jobs", force: true do |t|
+    t.string   "type"
+    t.string   "company"
+    t.string   "logo"
+    t.string   "url"
+    t.string   "position"
+    t.string   "location"
+    t.text     "description"
+    t.string   "how_to_apply"
+    t.string   "token"
+    t.boolean  "is_public"
+    t.boolean  "is_activated"
+    t.string   "email"
+    t.datetime "expires_at"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "jobs", ["category_id"], name: "index_jobs_on_category_id", using: :btree
 
   create_table "pages", force: true do |t|
     t.string   "title"

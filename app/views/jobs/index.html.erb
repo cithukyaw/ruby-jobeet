@@ -1,0 +1,51 @@
+<h1>Listing jobs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Company</th>
+      <th>Logo</th>
+      <th>Url</th>
+      <th>Position</th>
+      <th>Location</th>
+      <th>Description</th>
+      <th>How to apply</th>
+      <th>Token</th>
+      <th>Is public</th>
+      <th>Is activated</th>
+      <th>Email</th>
+      <th>Expires at</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobs.each do |job| %>
+      <tr>
+        <td><%= job.type %></td>
+        <td><%= job.company %></td>
+        <td><%= job.logo %></td>
+        <td><%= job.url %></td>
+        <td><%= job.position %></td>
+        <td><%= job.location %></td>
+        <td><%= job.description %></td>
+        <td><%= job.how_to_apply %></td>
+        <td><%= job.token %></td>
+        <td><%= job.is_public %></td>
+        <td><%= job.is_activated %></td>
+        <td><%= job.email %></td>
+        <td><%= job.expires_at %></td>
+        <td><%= job.category.name %></td>
+        <td><%= link_to 'Show', job %></td>
+        <td><%= link_to 'Edit', edit_job_path(job) %></td>
+        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Job', new_job_path %>
