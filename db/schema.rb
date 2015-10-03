@@ -11,28 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003151027) do
+ActiveRecord::Schema.define(version: 20151003171652) do
 
   create_table "categories", force: true do |t|
-    t.string   "name"
-    t.string   "slug"
+    t.string   "name",       limit: 100, null: false
+    t.string   "slug",       limit: 100
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "jobs", force: true do |t|
-    t.string   "type"
-    t.string   "company"
+    t.string   "type",         limit: 20,                  null: false
+    t.string   "company",      limit: 50,                  null: false
     t.string   "logo"
     t.string   "url"
-    t.string   "position"
+    t.string   "position",     limit: 100,                 null: false
     t.string   "location"
-    t.text     "description"
-    t.string   "how_to_apply"
+    t.text     "description",                              null: false
+    t.text     "how_to_apply",                             null: false
     t.string   "token"
-    t.boolean  "is_public"
-    t.boolean  "is_activated"
-    t.string   "email"
+    t.boolean  "is_public",                default: false
+    t.boolean  "is_activated",             default: false
+    t.string   "email",        limit: 100,                 null: false
     t.datetime "expires_at"
     t.integer  "category_id"
     t.datetime "created_at"
