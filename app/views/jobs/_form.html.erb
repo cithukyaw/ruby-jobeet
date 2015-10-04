@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :category_id %><br>
+    <%= f.label :category_id %> <span class="required">*</span><br>
     <%= f.collection_select :category_id, Category.all, :id, :name, prompt: true  %>
   </div>
 
   <div class="field">
-    <%= f.label :type %><br>
+    <%= f.label :type %> <span class="required">*</span><br>
     <%= f.text_field :type %>
   </div>
 
   <div class="field">
-    <%= f.label :company %><br>
-    <%= f.text_field :company %>
+    <%= f.label :company %> <span class="required">*</span><br>
+    <%= f.text_field :company, size: 30 %>
   </div>
 
   <div class="field">
@@ -33,53 +33,38 @@
 
   <div class="field">
     <%= f.label :url %><br>
-    <%= f.text_field :url %>
+    <%= f.text_field :url, size: 45 %>
   </div>
 
   <div class="field">
-    <%= f.label :position %><br>
+    <%= f.label :position %> <span class="required">*</span><br>
     <%= f.text_field :position %>
   </div>
 
   <div class="field">
-    <%= f.label :location %><br>
+    <%= f.label :location %> <span class="required">*</span><br>
     <%= f.text_field :location %>
   </div>
 
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :description %> <span class="required">*</span><br>
+    <%= f.text_area :description, rows: 10, cols: 60 %>
   </div>
 
   <div class="field">
-    <%= f.label :how_to_apply %>?<br>
-    <%= f.text_field :how_to_apply %>
+    <%= f.label :how_to_apply %>? <span class="required">*</span><br>
+    <%= f.text_area :how_to_apply, rows: 5, cols: 60 %>
   </div>
 
   <div class="field">
-    <%= f.label :token %><br>
-    <%= f.text_field :token %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :expires_at %><br>
-    <%= f.datetime_select :expires_at %>
+    <%= f.label :email %> <span class="required">*</span><br>
+    <%= f.text_field :email, size: 35 %>
   </div>
 
   <div class="field">
     <%= f.check_box :is_public %>
     <%= f.label :is_public %>?<br>
     Whether the job can also be published on affiliate websites or not.
-  </div>
-
-  <div class="field">
-    <%= f.check_box :is_activated %>
-    <%= f.label :is_activated %>?
   </div>
 
   <div class="actions">
