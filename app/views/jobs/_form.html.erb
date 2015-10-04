@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= f.label :type %> <span class="required">*</span><br>
-    <%= f.text_field :type %>
+    <%= f.select(:type, options_for_select(@job.types), prompt: true) %>
   </div>
 
   <div class="field">

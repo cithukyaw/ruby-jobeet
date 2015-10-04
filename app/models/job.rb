@@ -9,4 +9,13 @@ class Job < ActiveRecord::Base
   validates :description, presence: true, length: { minimum: 50 }
   validates :how_to_apply, presence: true, length: { minimum: 50 }
   validates :email, presence: true, email: true
+
+  def types
+    [
+      ['Full Time', 'full-time'],
+      ['Part Time', 'part-time'],
+      ['Freelance', 'freelance'],
+      ['Internship', 'internship']
+    ]
+  end
 end
