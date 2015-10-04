@@ -1,6 +1,7 @@
 require 'valid_email'
 
 class Job < ActiveRecord::Base
+  self.inheritance_column = nil
   belongs_to :category
   validates :category, presence: true
   validates :type, presence: true
