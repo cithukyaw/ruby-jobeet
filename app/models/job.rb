@@ -2,6 +2,9 @@ require 'valid_email'
 
 class Job < ActiveRecord::Base
   belongs_to :category
+
+  ## validation ###
+
   validates :category, presence: true
   validates :employment_type, presence: true
   validates :company, presence: true
@@ -10,16 +13,20 @@ class Job < ActiveRecord::Base
   validates :how_to_apply, presence: true, length: { minimum: 50 }
   validates :email, presence: true, email: true
 
+  ## active record callbacks ###
+
   before_create :set_expires_at_value, :set_token_value
 
-  def employment_types
-    [
-      ['Full Time', 'full-time'],
-      ['Part Time', 'part-time'],
-      ['Freelance', 'freelance'],
-      ['Internship', 'internship']
-    ]
-  end
+  ## constants ##
+
+  EMPLOYMENT_TYPES = {
+    'Full Time'   => 'full-time',
+    'Part Time'   => 'part-time',
+    'Freelance'   => 'freelance',
+    'Internship'  => 'internship'
+  }
+
+  ## methods ##
 
   protected
     def set_expires_at_value
