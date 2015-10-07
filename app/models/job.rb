@@ -10,7 +10,7 @@ class Job < ActiveRecord::Base
   validates :company, presence: true
   validates :position, presence: true
   validates :description, presence: true, length: { minimum: 50 }
-  validates :how_to_apply, presence: true, length: { minimum: 50 }
+  validates :how_to_apply, presence: true, length: { minimum: 25 }
   validates :email, presence: true, email: true
 
   ## active record callbacks ###

@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <strong>Category:</strong>
+  <%= @job.category.name %>
+</p>
+
+<p>
   <strong>Type:</strong>
   <%= @job.employment_type %>
 </p>
@@ -41,18 +46,13 @@
 </p>
 
 <p>
-  <strong>Token:</strong>
-  <%= @job.token %>
-</p>
-
-<p>
   <strong>Is public:</strong>
-  <%= @job.is_public %>
+  <%= @job.is_public ? 'Yes' : 'No' %>
 </p>
 
 <p>
   <strong>Is activated:</strong>
-  <%= @job.is_activated %>
+  <%= @job.is_activated ? 'Yes' : 'No' %>
 </p>
 
 <p>
@@ -61,13 +61,13 @@
 </p>
 
 <p>
-  <strong>Expires at:</strong>
-  <%= @job.expires_at %>
+  <strong>Posted at:</strong>
+  <%= @job.created_at.strftime('%Y-%m-%d') %>
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @job.category.name %>
+  <strong>Expires at:</strong>
+  <%= @job.expires_at.strftime('%Y-%m-%d') %>
 </p>
 
 <%= link_to 'Edit', edit_job_path(@job) %> |
