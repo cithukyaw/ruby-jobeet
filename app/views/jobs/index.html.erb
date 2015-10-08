@@ -19,7 +19,7 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= job.category.name %></td>
-        <td><%= job.employment_type %></td>
+        <td><%= Job::EMPLOYMENT_TYPES.key(job.employment_type) %></td>
         <td><%= job.company %></td>
         <td><%= job.url %></td>
         <td><%= job.position %></td>

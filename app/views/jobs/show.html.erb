@@ -7,7 +7,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @job.employment_type %>
+  <%= Job::EMPLOYMENT_TYPES.key(@job.employment_type) %>
 </p>
 
 <p>
