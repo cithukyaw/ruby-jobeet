@@ -15,4 +15,11 @@ ActiveAdmin.register Post do
 
   permit_params :title, :slug, :content, :tag_id
 
+  index do
+    column :title
+    column :slug
+    column :created_at
+    actions
+  end
+
 end

@@ -15,4 +15,12 @@ ActiveAdmin.register Tag do
 
   permit_params :title, :slug, :description
 
+  index do
+    column :title
+    column :slug
+    column :description
+    column :created_at
+    actions
+  end
+
 end

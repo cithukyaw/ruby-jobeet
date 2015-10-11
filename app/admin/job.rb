@@ -15,4 +15,15 @@ ActiveAdmin.register Job do
 
   permit_params :employment_type, :company, :logo, :url, :position, :location, :description, :how_to_apply, :token, :is_public, :is_activated, :email, :expires_at, :category_id
 
+  index do
+    column :position
+    column :company
+    column :url
+    column :employment_type
+    column :location
+    column :email
+    column :expires_at
+    actions
+  end
+
 end
