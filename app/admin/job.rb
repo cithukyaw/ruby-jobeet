@@ -13,5 +13,6 @@ ActiveAdmin.register Job do
 #   permitted
 # end
 
+  permit_params :employment_type, :company, :logo, :url, :position, :location, :description, :how_to_apply, :token, :is_public, :is_activated, :email, :expires_at, :category_id
 
 end

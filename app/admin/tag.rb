@@ -13,5 +13,6 @@ ActiveAdmin.register Tag do
 #   permitted
 # end
 
+  permit_params :title, :slug, :description
 
 end

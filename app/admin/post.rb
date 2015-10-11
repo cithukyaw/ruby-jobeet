@@ -13,5 +13,6 @@ ActiveAdmin.register Post do
 #   permitted
 # end
 
+  permit_params :title, :slug, :content, :tag_id
 
 end
