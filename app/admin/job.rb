@@ -46,4 +46,26 @@ ActiveAdmin.register Job do
     end
     actions
   end
+
+  show do
+    attributes_table do
+      row :position
+      row :category
+      row :employment_type do |j|
+        Job::EMPLOYMENT_TYPES.key(j.employment_type)
+      end
+      row :company
+      row :url
+      row :location
+      row :description do |j|
+        simple_format j.description # same as simple_format(j.description)
+      end
+      row('How to apply?') { |j| simple_format j.how_to_apply }
+      row :email
+      row("Published?") { |j| j.is_public ? 'Yes' : 'No' }
+      row("Activated?") { |j| j.is_activated ? 'Yes' : 'No' }
+      row("Posted on") { |j| j.created_at.strftime('%Y-%m-%d') }
+      row("Expires on") { |j| j.expires_at.strftime('%Y-%m-%d') }
+    end
+  end
 end
