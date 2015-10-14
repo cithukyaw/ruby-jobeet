@@ -21,5 +21,8 @@ module Jobeet
     # config.i18n.default_locale = :de
 
     # config.assets.initialize_on_precompile = false
+
+    # add active admin assets to precompile list, loaded from vendor/assets
+    config.assets.precompile += %w( active_admin.js active_admin.css.scss )
   end
 end
