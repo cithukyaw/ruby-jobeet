@@ -19,7 +19,9 @@ ActiveAdmin.register Job do
     column :position
     column :company
     column :url
-    column :employment_type
+    column :employment_type do |j|
+      Job::EMPLOYMENT_TYPES.key(j.employment_type)
+    end
     column :location
     column :email
     column :expires_at
