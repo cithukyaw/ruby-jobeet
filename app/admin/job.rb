@@ -18,7 +18,9 @@ ActiveAdmin.register Job do
   index do
     column :position
     column :company
-    column :url
+    column :url do |j|
+      link_to j.url, j.url
+    end
     column :employment_type do |j|
       Job::EMPLOYMENT_TYPES.key(j.employment_type)
     end
@@ -57,7 +59,9 @@ ActiveAdmin.register Job do
         Job::EMPLOYMENT_TYPES.key(j.employment_type)
       end
       row :company
-      row :url
+      row :url do |j|
+        link_to j.url, j.url
+      end
       row :location
       row :description do |j|
         simple_format j.description # same as simple_format(j.description)
