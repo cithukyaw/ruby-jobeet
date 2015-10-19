@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag @job.logo_url %>
+</p>
+
+<p>
   <strong>Category:</strong>
   <%= @job.category.name %>
 </p>
@@ -13,11 +17,6 @@
 <p>
   <strong>Company:</strong>
   <%= @job.company %>
-</p>
-
-<p>
-  <strong>Logo:</strong>
-  <%= @job.logo %>
 </p>
 
 <p>

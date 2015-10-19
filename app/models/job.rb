@@ -1,7 +1,9 @@
+require 'carrierwave/orm/activerecord'
 require 'valid_email'
 
 class Job < ActiveRecord::Base
   belongs_to :category
+  mount_uploader :logo, JobLogoUploader
 
   ## validation ###
 
