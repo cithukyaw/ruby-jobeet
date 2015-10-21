@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <%= image_tag @job.logo_url %>
+  <%= link_to image_tag(@job.logo_url(:thumb)), @job.logo_url, { target: '_blank' } %>
 </p>
 
 <p>
@@ -21,7 +21,7 @@
 
 <p>
   <strong>Url:</strong>
-  <%= @job.url %>
+  <%= link_to @job.url, @job.url, { target: '_blank' } %>
 </p>
 
 <p>

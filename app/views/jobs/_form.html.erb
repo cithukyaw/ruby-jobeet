@@ -29,6 +29,11 @@
   <div class="field">
     <%= f.label :logo %><br>
     <%= f.file_field :logo %>
+    <% if @job.logo? %>
+      <br>
+      <br>
+      <%= image_tag @job.logo_url(:thumb) %>
+    <% end %>
   </div>
 
   <div class="field">

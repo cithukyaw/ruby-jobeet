@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'valid_email'
 # Use file upload with carrierwaveuploader/carrierwave
 gem 'carrierwave'
+gem 'mini_magick'
 
 # Use ActiveAdmin
 gem 'activeadmin', github: 'activeadmin'
