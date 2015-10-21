@@ -36,6 +36,7 @@ ActiveAdmin.register Job do
       f.input :employment_type, as: :select, collection: Job::EMPLOYMENT_TYPES
       f.input :position
       f.input :company
+      f.input :logo, as: :file
       f.input :url
       f.input :location
       f.input :description
@@ -59,6 +60,7 @@ ActiveAdmin.register Job do
         Job::EMPLOYMENT_TYPES.key(j.employment_type)
       end
       row :company
+      row('Logo') { |j| link_to j.logo, j.logo_url, { target: '_blank' } }
       row :url do |j|
         link_to j.url, j.url
       end
