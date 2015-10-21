@@ -6,7 +6,6 @@
       <th>Category</th>
       <th>Type</th>
       <th>Company</th>
-      <th>Url</th>
       <th>Position</th>
       <th>Location</th>
       <th>Posted at</th>
@@ -20,8 +19,7 @@
       <tr>
         <td><%= job.category.name %></td>
         <td><%= Job::EMPLOYMENT_TYPES.key(job.employment_type) %></td>
-        <td><%= job.company %></td>
-        <td><%= job.url %></td>
+        <td><%= link_to job.company, job.url, { target: '_blank' } %></td>
         <td><%= job.position %></td>
         <td><%= job.location %></td>
         <td><%= job.created_at.strftime('%Y-%m-%d') %></td>
