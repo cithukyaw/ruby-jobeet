@@ -5,6 +5,9 @@ class Job < ActiveRecord::Base
   belongs_to :category
   mount_uploader :logo, JobLogoUploader
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: :slugged
+
   ## validation ###
 
   validates :category, presence: true
@@ -29,6 +32,14 @@ class Job < ActiveRecord::Base
   }
 
   ## methods ##
+
+  # Try building a slug based on the following fields in
+  # increasing order of specificity.
+  def slug_candidates
+    [
+      [:company, :location, :id, :position]
+    ]
+  end
 
   protected
     def set_expires_at_value
