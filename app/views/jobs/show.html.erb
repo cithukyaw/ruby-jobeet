@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= link_to image_tag(@job.logo_url(:thumb)), @job.logo_url, { target: '_blank' } %>
+</p>
+
+<p>
   <strong>Category:</strong>
   <%= @job.category.name %>
 </p>
@@ -16,13 +20,8 @@
 </p>
 
 <p>
-  <strong>Logo:</strong>
-  <%= @job.logo %>
-</p>
-
-<p>
   <strong>Url:</strong>
-  <%= @job.url %>
+  <%= link_to @job.url, @job.url, { target: '_blank' } %>
 </p>
 
 <p>

@@ -1,4 +1,4 @@
-<%= form_for(@job) do |f| %>
+<%= form_for(@job, html: { :multipart => true }) do |f| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@job.errors.count, "error") %> prohibited this job from being saved:</h2>
@@ -28,7 +28,12 @@
 
   <div class="field">
     <%= f.label :logo %><br>
-    <%= f.text_field :logo %>
+    <%= f.file_field :logo %>
+    <% if @job.logo? %>
+      <br>
+      <br>
+      <%= image_tag @job.logo_url(:thumb) %>
+    <% end %>
   </div>
 
   <div class="field">
