@@ -15,4 +15,5 @@ ActiveAdmin.register Category do
 
   permit_params :name, :slug
 
+  config.sort_order = 'name_asc'
 end
