@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'pages' => 'pages#index'
 
-  root 'pages#index'
+  root 'jobs#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
