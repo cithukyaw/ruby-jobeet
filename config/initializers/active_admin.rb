@@ -259,4 +259,14 @@ ActiveAdmin.setup do |config|
   # You can enable or disable them for all resources here.
   #
   # config.filters = true
+
+  ActiveAdmin::ResourceController.class_eval do
+    def find_resource
+      if resource_class.is_a?(FriendlyId)
+        scoped_collection.where(slug: params[:id]).first!
+      else
+        scoped_collection.where(id: params[:id]).first!
+      end
+    end
+  end
 end
