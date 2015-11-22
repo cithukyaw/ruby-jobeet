@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :jobs
 
   get 'pages' => 'pages#index'
+  get 'category/:slug' => 'categories#show'
 
   root 'jobs#index'
 
