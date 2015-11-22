@@ -16,4 +16,21 @@ ActiveAdmin.register Category do
   permit_params :name, :slug
 
   config.sort_order = 'name_asc'
+
+  filter :name
+
+  index do
+    column :name
+    column :slug
+    column :created_at
+    actions
+  end
+
+  show do
+    attributes_table do
+      row :name
+      row :slug
+      row :created_at
+    end
+  end
 end
