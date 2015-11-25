@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'pages' => 'pages#index'
   get 'category/:slug' => 'categories#show'
 
-  root 'jobs#index'
+  root 'jobs#index', as: :home
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
