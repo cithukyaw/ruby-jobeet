@@ -41,6 +41,24 @@ class Job < ActiveRecord::Base
     ]
   end
 
+  def self.get_active_jobs(options = {})
+    options = { category: nil, max: nil }.merge(options)
+
+    query = self
+      .where('jobs.expires_at > ?', Time.now.strftime('%Y-%m-%d %H:%M:%S'))
+      .where('jobs.is_activated = ?', 1)
+
+    if options[:category].present?
+      query = query.where('jobs.category_id = ?', options[:category])
+    end
+
+    if options[:max].present?
+      query = query.take(options[:max])
+    end
+
+    return query
+  end
+
   protected
     def set_expires_at_value
       if self.expires_at.nil?

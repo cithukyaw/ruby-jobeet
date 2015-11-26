@@ -4,7 +4,10 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    @categories = Category.get_with_jobs
+    @categories.each do |category|
+      category.active_jobs = Job.get_active_jobs({ category: category.id, max: Rails.application.config.max_jobs_on_homepage })
+    end
   end
 
   # GET /jobs/1
