@@ -42,7 +42,7 @@ class Job < ActiveRecord::Base
   end
 
   def self.get_active_jobs(options = {})
-    options = { category: nil, max: nil }.merge(options)
+    options = { category: nil, max: nil, count: nil }.merge(options)
 
     query = self
       .where('jobs.expires_at > ?', Time.now.strftime('%Y-%m-%d %H:%M:%S'))
@@ -56,7 +56,17 @@ class Job < ActiveRecord::Base
       query = query.take(options[:max])
     end
 
+    if options[:count].present?
+      return query.count
+    end
+
     return query
+  end
+
+  def self.count_active_jobs(options = {})
+    options = { category: nil, max: nil, count: nil }.merge(options)
+    options[:count] = true
+    self.get_active_jobs(options)
   end
 
   protected

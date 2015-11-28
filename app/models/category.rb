@@ -10,6 +10,14 @@ class Category < ActiveRecord::Base
     @active_jobs
   end
 
+  def no_of_jobs=(value)
+    @no_of_jobs = value
+  end
+
+  def no_of_jobs
+    @no_of_jobs
+  end
+
   def self.get_with_jobs
     Category.joins(:jobs)
       .where('jobs.expires_at > ?', Time.now.strftime('%Y-%m-%d %H:%M:%S'))

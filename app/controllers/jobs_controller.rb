@@ -7,6 +7,7 @@ class JobsController < ApplicationController
     @categories = Category.get_with_jobs
     @categories.each do |category|
       category.active_jobs = Job.get_active_jobs({ category: category.id, max: Rails.application.config.max_jobs_on_homepage })
+      category.no_of_jobs = Job.count_active_jobs({ category: category.id })
     end
   end
 

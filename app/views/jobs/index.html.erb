@@ -18,6 +18,13 @@
           <td><%= link_to 'Delete', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
+      <% if category.no_of_jobs > 1 %>
+        <tr>
+          <td colspan="8" class="more-jobs">
+            and <%= link_to category.no_of_jobs.to_s + ' more', :controller => 'categories', :action => 'show', :slug => category.slug %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
