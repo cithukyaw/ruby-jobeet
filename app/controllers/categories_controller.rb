@@ -5,7 +5,10 @@ class CategoriesController < ApplicationController
   # GET /category/slug.json
   def show
     # @jobs = Job.joins(:category).where('categories.slug = ?', params[:slug])
-    @jobs = Job.joins(:category).where(categories: { slug: params[:slug] })
+    # @jobs = Job.joins(:category).where(categories: { slug: params[:slug] })
+    @jobs = Job.joins(:category)
+      .where(categories: { slug: params[:slug] })
+      .paginate(:page => params[:page], :per_page => Rails.application.config.max_jobs_on_category) # use will_paginate
   end
 
   private
