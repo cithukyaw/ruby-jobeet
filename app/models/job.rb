@@ -41,6 +41,46 @@ class Job < ActiveRecord::Base
     ]
   end
 
+  # Get all active jobs
+  # @param object  options
+  # @param integer options[:category] The category id
+  # @param integer options[:max]      Maximum number of jobs to be fetched
+  # @param integer options[:count]    true for for count query
+  # @return collection|integer
+  def self.get_active_jobs(options = {})
+    options = { category: nil, max: nil, count: nil }.merge(options)
+
+    query = self
+      .where('jobs.expires_at > ?', Time.now.strftime('%Y-%m-%d %H:%M:%S'))
+      .where('jobs.is_activated = ?', 1)
+
+    if options[:category].present?
+      query = query.where('jobs.category_id = ?', options[:category])
+    end
+
+    if options[:max].present?
+      query = query.take(options[:max])
+    end
+
+    if options[:count].present?
+      return query.count
+    end
+
+    return query
+  end
+
+  # Count all active jobs
+  # @param object  options
+  # @param integer options[:category] The category id
+  # @param integer options[:max]      Maximum number of jobs to be fetched
+  # @param integer options[:count]    true for for count query
+  # @return integer
+  def self.count_active_jobs(options = {})
+    options = { category: nil, max: nil, count: nil }.merge(options)
+    options[:count] = true
+    self.get_active_jobs(options)
+  end
+
   protected
     def set_expires_at_value
       if self.expires_at.nil?
