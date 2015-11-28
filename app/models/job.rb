@@ -41,6 +41,12 @@ class Job < ActiveRecord::Base
     ]
   end
 
+  # Get all active jobs
+  # @param object  options
+  # @param integer options[:category] The category id
+  # @param integer options[:max]      Maximum number of jobs to be fetched
+  # @param integer options[:count]    true for for count query
+  # @return collection|integer
   def self.get_active_jobs(options = {})
     options = { category: nil, max: nil, count: nil }.merge(options)
 
@@ -63,6 +69,12 @@ class Job < ActiveRecord::Base
     return query
   end
 
+  # Count all active jobs
+  # @param object  options
+  # @param integer options[:category] The category id
+  # @param integer options[:max]      Maximum number of jobs to be fetched
+  # @param integer options[:count]    true for for count query
+  # @return integer
   def self.count_active_jobs(options = {})
     options = { category: nil, max: nil, count: nil }.merge(options)
     options[:count] = true
