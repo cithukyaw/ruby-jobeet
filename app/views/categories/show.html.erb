@@ -26,15 +26,12 @@
     </tbody>
   </table>
 
-  <% if @jobs.size < @jobs.total_entries %>
-    <div class="digg_pagination">
-      <div class="page_info">
-        <%= page_entries_info @jobs %>
-      </div>
-      <%= will_paginate @jobs %>
+  <div class="digg_pagination">
+    <div class="page_info">
+      <%= page_entries_info @jobs %>
     </div>
-  <% end %>
-
+    <%= paginate @jobs %>
+  </div>
 <% else %>
   <p>There is no jobs for the category "<%= @category.name %>".</p>
 <% end %>

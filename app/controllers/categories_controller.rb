@@ -7,8 +7,8 @@ class CategoriesController < ApplicationController
     # @jobs = Job.joins(:category).where('categories.slug = ?', params[:slug])
     # @jobs = Job.joins(:category).where(categories: { slug: params[:slug] })
     @jobs = Job.joins(:category)
-      .where(categories: { slug: params[:slug] })
-      .paginate(:page => params[:page], :per_page => Rails.application.config.max_jobs_on_category) # use will_paginate
+      .where(categories: { id: @category.id })
+      .page(params[:page]).per(Rails.application.config.max_jobs_on_category) # Use `kaminari`
   end
 
   private
