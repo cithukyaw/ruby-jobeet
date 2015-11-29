@@ -1,13 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  slug: MyString
-  content: MyText
-  tag_id: 
-
-two:
-  title: MyString
-  slug: MyString
-  content: MyText
-  tag_id: 
+post_one:
+  id: 1
+  title: Welcome to Ruby on Rails Tutorial
+  slug: welcome-to-ruby-on-rails-tutorial
+  content: <p>Ruby on Rails Tutorial inspired by PHP Symfony2 jobeet.symfony.gr.jp</p>
+  tag_id:

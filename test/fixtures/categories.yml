@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  slug: MyString
+cat_programming:
+  id: 1
+  name: Programming
+  slug: programming
 
-two:
-  name: MyString
-  slug: MyString
+cat_web_design:
+  id: 2
+  name: Web Design
+  slug: web-design
