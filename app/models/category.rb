@@ -2,6 +2,16 @@ class Category < ActiveRecord::Base
   has_many :jobs
   default_scope { order(created_at: :desc) }
 
+  # Custom property `active_jobs` setter
+  def active_jobs=(value)
+    @active_jobs = value
+  end
+
+  # Custom property `active_jobs` getter
+  def active_jobs
+    @active_jobs
+  end
+
   # Custom property `no_of_jobs` setter
   def no_of_jobs=(value)
     @no_of_jobs = value

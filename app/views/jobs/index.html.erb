@@ -6,7 +6,7 @@
           <%= link_to category.name, :controller => 'categories', :action => 'show', :slug => category.slug %>
         </th>
       </tr>
-      <% category.jobs.each do |job| %>
+      <% category.active_jobs.each do |job| %>
         <tr>
           <td><%= Job::EMPLOYMENT_TYPES.key(job.employment_type) %></td>
           <td><%= link_to job.position, job %></td>
