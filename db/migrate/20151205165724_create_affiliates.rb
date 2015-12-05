@@ -8,5 +8,7 @@ class CreateAffiliates < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :affiliates, :email, unique: true
   end
 end
