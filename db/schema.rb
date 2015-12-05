@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025065314) do
+ActiveRecord::Schema.define(version: 20151205165724) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(version: 20151025065314) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "affiliates", force: true do |t|
+    t.string   "url"
+    t.string   "email"
+    t.string   "token"
+    t.boolean  "is_active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "affiliates", ["email"], name: "index_affiliates_on_email", unique: true, using: :btree
+
   create_table "categories", force: true do |t|
     t.string   "name",       limit: 100, null: false
     t.string   "slug",       limit: 100
@@ -67,6 +78,7 @@ ActiveRecord::Schema.define(version: 20151025065314) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "jobs", force: true do |t|
+    t.string   "slug"
     t.string   "employment_type", limit: 20,                  null: false
     t.string   "company",         limit: 50,                  null: false
     t.string   "logo"
@@ -83,7 +95,6 @@ ActiveRecord::Schema.define(version: 20151025065314) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "slug"
   end
 
   add_index "jobs", ["category_id"], name: "index_jobs_on_category_id", using: :btree
