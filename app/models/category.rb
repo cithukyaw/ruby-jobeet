@@ -1,5 +1,7 @@
 class Category < ActiveRecord::Base
   has_many :jobs
+  has_and_belongs_to_many :affiliates
+
   default_scope { order(created_at: :desc) }
 
   # Custom property `active_jobs` setter
