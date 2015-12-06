@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205165724) do
+ActiveRecord::Schema.define(version: 20151205172314) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 20151205165724) do
   end
 
   add_index "affiliates", ["email"], name: "index_affiliates_on_email", unique: true, using: :btree
+
+  create_table "affiliates_categories", id: false, force: true do |t|
+    t.integer "category_id",  null: false
+    t.integer "affiliate_id", null: false
+  end
+
+  add_index "affiliates_categories", ["affiliate_id", "category_id"], name: "index_affiliates_categories_on_affiliate_id_and_category_id", using: :btree
+  add_index "affiliates_categories", ["category_id", "affiliate_id"], name: "index_affiliates_categories_on_category_id_and_affiliate_id", using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name",       limit: 100, null: false
