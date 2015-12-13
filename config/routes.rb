@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'pages' => 'pages#index'
   get 'category/:slug' => 'categories#show'
 
+  get 'affiliates/wait' => 'affiliates#wait'
+  resources :affiliates
+
   root 'jobs#index', as: :home
 
   devise_for :admin_users, ActiveAdmin::Devise.config
