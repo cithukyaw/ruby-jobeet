@@ -9,6 +9,14 @@ class Affiliate < ActiveRecord::Base
   ## active record callbacks ###
   before_create :set_token_value, :set_is_active_value
 
+  def activate
+    self.update_attributes({ is_active: true })
+  end
+
+  def deactivate
+    self.update_attributes({ is_active: false })
+  end
+
   protected
     def set_token_value
       if self.token.nil?

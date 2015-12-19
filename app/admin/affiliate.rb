@@ -15,4 +15,26 @@ ActiveAdmin.register Affiliate do
 
   permit_params :url, :email
 
+  index do
+    column :url
+    column :email
+    column :created_at
+    actions defaults: false do |affiliate|
+      if affiliate.is_active?
+        link_to 'Deactivate', deactivate_admin_affiliate_path(affiliate)
+      else
+        link_to 'Activate', activate_admin_affiliate_path(affiliate)
+      end
+    end
+  end
+
+  member_action :activate, method: :get do
+    Affiliate.find(params[:id]).activate
+    redirect_to :back, notice: "Activated!"
+  end
+
+  member_action :deactivate, method: :get do
+    Affiliate.find(params[:id]).deactivate
+    redirect_to :back, notice: "Deactivated!"
+  end
 end
