@@ -29,7 +29,10 @@ ActiveAdmin.register Affiliate do
   end
 
   member_action :activate, method: :get do
-    Affiliate.find(params[:id]).activate
+    @affiliate = Affiliate.find(params[:id])
+    if @affiliate.activate
+      AffiliateMailer.affiliate_activate_mail(@affiliate).deliver
+    end
     redirect_to :back, notice: "Activated!"
   end
 
