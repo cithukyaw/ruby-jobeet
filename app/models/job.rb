@@ -43,12 +43,13 @@ class Job < ActiveRecord::Base
 
   # Get all active jobs
   # @param object  options
-  # @param integer options[:category] The category id
-  # @param integer options[:max]      Maximum number of jobs to be fetched
-  # @param integer options[:count]    true for for count query
+  # @param integer options[:category]   The category id
+  # @param integet options[:affiliate]  The affiliate id
+  # @param integer options[:max]        Maximum number of jobs to be fetched
+  # @param integer options[:count]      true for for count query
   # @return collection|integer
   def self.get_active_jobs(options = {})
-    options = { category: nil, max: nil, count: nil }.merge(options)
+    options = { category: nil, affiliate: nil, max: nil, count: nil }.merge(options)
 
     query = self
       .where('jobs.expires_at > ?', Time.now.strftime('%Y-%m-%d %H:%M:%S'))
@@ -56,6 +57,12 @@ class Job < ActiveRecord::Base
 
     if options[:category].present?
       query = query.where('jobs.category_id = ?', options[:category])
+    end
+
+    if options[:affiliate].present?
+      query = query.joins('LEFT JOIN `categories` ON categories.id = jobs.category_id')
+        .joins('LEFT JOIN `affiliates_categories` ON affiliates_categories.category_id = categories.id')
+        .where('affiliates_categories.affiliate_id = ?', options[:affiliate])
     end
 
     if options[:max].present?
@@ -71,14 +78,37 @@ class Job < ActiveRecord::Base
 
   # Count all active jobs
   # @param object  options
-  # @param integer options[:category] The category id
-  # @param integer options[:max]      Maximum number of jobs to be fetched
-  # @param integer options[:count]    true for for count query
+  # @param integer options[:category]   The category id
+  # @param integet options[:affiliate]  The affiliate id
+  # @param integer options[:max]        Maximum number of jobs to be fetched
+  # @param integer options[:count]      true for for count query
   # @return integer
   def self.count_active_jobs(options = {})
-    options = { category: nil, max: nil, count: nil }.merge(options)
+    options = { category: nil, affiliate: nil, max: nil, count: nil }.merge(options)
     options[:count] = true
     self.get_active_jobs(options)
+  end
+
+  # Convert active record list to hash
+  def self.as_hash(active_jobs)
+    data = Hash.new
+    active_jobs.each do |job|
+      # non_friendly_url = job_url({ id: job.id })
+      friendly_url = Rails.application.routes.url_helpers.job_url(job, :host => Rails.application.config.action_mailer.default_url_options[:host])
+      data[friendly_url] = {
+        category:     job.category.name,
+        type:         Job::EMPLOYMENT_TYPES.key(job.employment_type),
+        company:      job.company,
+        logo:         job.logo_url,
+        url:          job.url,
+        position:     job.position,
+        location:     job.location,
+        description:  job.description,
+        how_to_apply: job.how_to_apply,
+        expires_at:   job.expires_at.strftime('%Y-%m-%d')
+      }
+    end
+    return data
   end
 
   protected

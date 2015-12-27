@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jobs>
+  <% @jobs.each do |url, job| %>
+    <job url="<%= url %>">
+      <% job.each do |key, value| %>
+      <<%= key %>><%= value %></<%= key %>>
+      <% end %>
+    </job>
+  <% end %>
+</jobs>

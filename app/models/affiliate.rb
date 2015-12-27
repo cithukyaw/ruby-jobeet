@@ -17,6 +17,10 @@ class Affiliate < ActiveRecord::Base
     self.update_attributes({ is_active: false })
   end
 
+  def self.get_by_token(token)
+    Affiliate.where(token: token, is_active: true).take
+  end
+
   protected
     def set_token_value
       if self.token.nil?
