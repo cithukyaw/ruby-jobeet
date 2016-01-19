@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    Your affiliate account has been activated.<br>
+    Your secret token is <%= @affiliate.token %>.<br>
+    You can see the jobs list at the following addresses:<br>
+    <%= link_to @url_json, @url_json %><br>
+    or <%= link_to @url_xml, @url_xml %><br>
+    or <%= link_to @url_yaml, @url_yaml %><br>
+  </body>
+</html>

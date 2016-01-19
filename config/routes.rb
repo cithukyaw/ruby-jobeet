@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  resources :posts
 
-  resources :jobs
+  root 'jobs#index', as: :home
 
   get 'pages' => 'pages#index'
   get 'category/:slug' => 'categories#show'
+  get 'affiliates/wait' => 'affiliates#wait'
+  get 'api/:token/jobs.:format', to: 'api#list', as: 'api', constraints: { format: /json|xml|yaml/ }
 
-  root 'jobs#index', as: :home
+  resources :affiliates
+  resources :posts
+  resources :jobs
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

@@ -1,0 +1,6 @@
+<% @jobs.each do |url, job| %>
+Url: <%= url %>
+<% job.each do |key, value| %>
+  <%= key %>: <%= value %>
+<% end %>
+<% end %>

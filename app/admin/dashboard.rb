@@ -28,6 +28,16 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
+        panel "Affiliates to activate" do
+          table_for Affiliate.where("is_active = 0") do
+            column :email
+            column :created_at
+          end
+          strong { link_to "View All Affiliates", admin_affiliates_path }
+        end
+      end
+
+      column do
         panel "Info" do
           para "Welcome to ActiveAdmin."
         end
