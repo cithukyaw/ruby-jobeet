@@ -18,3 +18,42 @@ a:hover {
   background: transparent;
   color: #000;
 }
+
+.navbar-brand {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbar-inverse a {
+  color: #fff;
+}
+
+.navbar .navbar-right {
+  padding-top: 7px;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.footer .container {
+  padding-top: 20px;
+}
