@@ -18,3 +18,75 @@ a:hover {
   background: transparent;
   color: #000;
 }
+
+.navbar-brand {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.navbar-inverse a,
+.navbar-inverse a:visited {
+  color: #fff;
+}
+
+.navbar .navbar-right {
+  padding-top: 7px;
+}
+
+.table .category th {
+  font-size: 18px;
+}
+
+.table .more-jobs {
+  background: #fff;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.table .more-jobs a {
+  font-weight: bold;
+}
+
+.search-panel {
+  padding-top: 25px;
+  padding-bottom: 34px;
+}
+
+.search-panel h2 {
+  text-transform: uppercase;
+}
+
+.search-panel .form-control {
+  height: 47px;
+  width: 85%;
+}
+
+.btn-primary:visited, .btn-warning:visited {
+  color: #fff;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.footer .container {
+  padding-top: 20px;
+}

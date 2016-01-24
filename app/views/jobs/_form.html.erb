@@ -1,3 +1,5 @@
+<% new_mode = !@job.created_at.present? %>
+
 <%= form_for(@job, html: { :multipart => true }) do |f| %>
   <% if @job.errors.any? %>
     <div id="error_explanation">
@@ -13,17 +15,17 @@
 
   <div class="field">
     <%= f.label :category_id %> <span class="required">*</span><br>
-    <%= f.collection_select :category_id, Category.all, :id, :name, prompt: true  %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: true }, { class: "form-control" } %>
   </div>
 
   <div class="field">
     <%= f.label :employment_type %> <span class="required">*</span><br>
-    <%= f.select(:employment_type, options_for_select(Job::EMPLOYMENT_TYPES, @job.employment_type), prompt: true) %>
+    <%= f.select(:employment_type, options_for_select(Job::EMPLOYMENT_TYPES, @job.employment_type), { prompt: true }, { class: "form-control" }) %>
   </div>
 
   <div class="field">
     <%= f.label :company %> <span class="required">*</span><br>
-    <%= f.text_field :company, size: 30 %>
+    <%= f.text_field :company, size: 30, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -38,32 +40,32 @@
 
   <div class="field">
     <%= f.label :url %><br>
-    <%= f.text_field :url, size: 45 %>
+    <%= f.text_field :url, size: 45, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :position %> <span class="required">*</span><br>
-    <%= f.text_field :position %>
+    <%= f.text_field :position, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :location %> <span class="required">*</span><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :description %> <span class="required">*</span><br>
-    <%= f.text_area :description, rows: 10, cols: 60 %>
+    <%= f.text_area :description, rows: 10, cols: 60, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :how_to_apply %>? <span class="required">*</span><br>
-    <%= f.text_area :how_to_apply, rows: 5, cols: 60 %>
+    <%= f.text_area :how_to_apply, rows: 5, cols: 60, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :email %> <span class="required">*</span><br>
-    <%= f.text_field :email, size: 35 %>
+    <%= f.text_field :email, size: 35, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -73,6 +75,12 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <% if new_mode %>
+      <%= f.submit "Create Job", class: "btn btn-success btn-lg" %>
+    <% else %>
+      <%= f.submit "Update Job", class: "btn btn-primary btn-lg" %>
+      <%= link_to 'View Job', @job, class: "btn btn-warning" %>
+    <% end %>
+    <%= link_to 'Cancel & Back', jobs_path, class: "btn btn-default" %>
   </div>
 <% end %>

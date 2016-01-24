@@ -1,38 +1,19 @@
-<p id="notice"><%= notice %></p>
-
+<h1><%= @job.position %> - <%= @job.location %></h1>
+<p class="text-muted">
+  <strong>Company:</strong> <%= link_to @job.company, @job.url, { target: '_blank' } %>,
+  posted on <%= @job.created_at.strftime('%Y-%m-%d') %>,
+  expired on <%= @job.expires_at.strftime('%Y-%m-%d') %>
+</p>
 <p>
-  <%= link_to image_tag(@job.logo_url(:thumb)), @job.logo_url, { target: '_blank' } %>
+  <span class="label label-primary"><%= Job::EMPLOYMENT_TYPES.key(@job.employment_type) %></span>
+  <span class="label label-warning"><%= @job.category.name %></span>
 </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @job.category.name %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= Job::EMPLOYMENT_TYPES.key(@job.employment_type) %>
-</p>
-
-<p>
-  <strong>Company:</strong>
-  <%= @job.company %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= link_to @job.url, @job.url, { target: '_blank' } %>
-</p>
-
-<p>
-  <strong>Position:</strong>
-  <%= @job.position %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @job.location %>
-</p>
+<% if @job.logo.present? %>
+  <p class="pull-right">
+    <%= link_to image_tag(@job.logo_url(:thumb)), @job.logo_url, { target: '_blank' } %>
+  </p>
+<% end %>
 
 <p>
   <strong>Description:</strong>
@@ -45,29 +26,9 @@
 </p>
 
 <p>
-  <strong>Is public:</strong>
-  <%= @job.is_public ? 'Yes' : 'No' %>
-</p>
-
-<p>
-  <strong>Is activated:</strong>
-  <%= @job.is_activated ? 'Yes' : 'No' %>
-</p>
-
-<p>
   <strong>Email:</strong>
   <%= @job.email %>
 </p>
 
-<p>
-  <strong>Posted at:</strong>
-  <%= @job.created_at.strftime('%Y-%m-%d') %>
-</p>
-
-<p>
-  <strong>Expires at:</strong>
-  <%= @job.expires_at.strftime('%Y-%m-%d') %>
-</p>
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+<%= link_to 'Back', jobs_path, class: 'btn btn-default' %>
+<%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary' %>
