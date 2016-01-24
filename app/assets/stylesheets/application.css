@@ -25,12 +25,45 @@ a:hover {
   text-transform: uppercase;
 }
 
-.navbar-inverse a {
+.navbar-inverse a,
+.navbar-inverse a:visited {
   color: #fff;
 }
 
 .navbar .navbar-right {
   padding-top: 7px;
+}
+
+.table .category th {
+  font-size: 18px;
+}
+
+.table .more-jobs {
+  background: #fff;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.table .more-jobs a {
+  font-weight: bold;
+}
+
+.search-panel {
+  padding-top: 25px;
+  padding-bottom: 34px;
+}
+
+.search-panel h2 {
+  text-transform: uppercase;
+}
+
+.search-panel .form-control {
+  height: 47px;
+  width: 85%;
+}
+
+.btn-primary:visited, .btn-warning:visited {
+  color: #fff;
 }
 
 /* Sticky footer styles
