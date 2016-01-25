@@ -66,6 +66,10 @@ a:hover {
   color: #fff;
 }
 
+.bg-block {
+  padding: 15px;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'category/:slug' => 'categories#show'
   get 'affiliates/wait' => 'affiliates#wait'
   get 'api/:token/jobs.:format', to: 'api#list', as: 'api', constraints: { format: /json|xml|yaml/ }
+  get 'search', to: 'jobs#search', as: 'search'
 
   resources :affiliates
   resources :posts

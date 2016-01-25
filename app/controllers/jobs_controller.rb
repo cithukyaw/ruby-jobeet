@@ -65,6 +65,26 @@ class JobsController < ApplicationController
     end
   end
 
+  # GET /search
+  def search
+    # @query = params[:query].gsub!(/[^a-zA-Z0-9 ]/, '');
+    @query = params[:query];
+    keywords = @query.split(' ');
+
+    qb = Job.order('created_at DESC')
+      .where('expires_at > ?', Time.now.strftime('%Y-%m-%d %H:%M:%S'))
+      .where('is_activated = ?', 1)
+
+    keywords.each do |keyword|
+      value = '%' + keyword + '%'
+      qb = qb.where('company LIKE ? OR position LIKE ? OR location LIKE ?', value, value, value)
+    end
+
+    @jobs = qb.page(params[:page]).per(Rails.application.config.max_jobs_on_category) # Use `kaminari`
+
+    render :search
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job

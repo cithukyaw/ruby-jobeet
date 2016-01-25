@@ -2,10 +2,10 @@
   <h2>
     <label for="search-keywords">Search for a Job</label>
   </h2>
-  <form class="form-inline" method="get">
-    <input type="text" name="query" class="form-control" id="search-keywords" aria-describedby="help-block">
-    <button type="submit" class="btn btn-primary btn-lg">Search</button>
-    <span id="help-block" class="help-block">Enter some keywords (city, country, position, ...)</span>
+  <form class="form-inline" action="<%= search_path %>" method="get">
+    <input type="text" name="query" class="form-control" id="search-keywords" aria-describedby="help-block" placeholder="Type at least 2 characters...">
+    <button type="submit" class="btn btn-primary btn-lg" id="search-button">Search</button>
+    <span id="help-block" class="help-block">Enter some keywords (company, country, position, ...)</span>
   </form>
 </div>
 <table class="table table-striped table-hover">

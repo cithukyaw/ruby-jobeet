@@ -54,6 +54,7 @@ class Job < ActiveRecord::Base
     query = self
       .where('jobs.expires_at > ?', Time.now.strftime('%Y-%m-%d %H:%M:%S'))
       .where('jobs.is_activated = ?', 1)
+      .order('jobs.created_at DESC')
 
     if options[:category].present?
       query = query.where('jobs.category_id = ?', options[:category])
