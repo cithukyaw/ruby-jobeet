@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :posts
   resources :jobs
 
-  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   # The priority is based upon order of creation: first created -> highest priority.
